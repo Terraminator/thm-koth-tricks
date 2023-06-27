@@ -70,7 +70,14 @@ The file system can be mounted to be writable again using: mount -o rw,remount /
 
 ## Rootkits:
 
-I want to say that i dont like users who spam their rootkits in public games, as they are completely gamebreaking. Also they are not really practical in real world.
+I want to say that i dont like users who spam their rootkits in public games, as they are completely gamebreaking. Also they are not really practical in real world.  
+To give you the opportunity to prevent other people from using rootkits, here the killswitch:
+<pre>
+echo 1 > /proc/sys/kernel/modules_disabled
+sudo sysctl -w kernel.modules_disabled=1
+sudo sysctl -w module.sig_enforce=1
+</pre>
+This will only block rootkits if you run these commads before someone inserts a rootkit!
 
 ## Userspace rootkits:
 see https://github.com/Terraminator/kirito
