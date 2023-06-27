@@ -1,11 +1,12 @@
 # thm-koth-tricks
 
 Note:
-First of all I suggest trying to find tricks for yourself before reading this as you will learn the most by inventing things for yourself. You wont find any flags or writeups for koth machines here, as the machines are not rotating and I want to keep the game playable.
+First of all I suggest trying to find tricks for yourself before reading this as you will learn the most by inventing things for yourself. You wont find any flags or writeups for koth machines here, as the machines are not rotating and I want to keep the game playable.  
 I also want to thank some people i had fun with during playing koth: MatheuzSec(https://github.com/MatheuZSecurity), F11Snipe(https://github.com/f11snipe), H00dy(https://github.com/hoodietramp)
 
 # Introduction:
-King of the Hill (KoTH) is a competitive hacking game, where you play against 10 other hackers to compromise a machine and then patch its vulnerabilities to stop other players from also gaining access. The longer your name stays in king.txt, the more points you get.
+King of the Hill (KoTH) is a competitive hacking game, where you play against 10 other hackers to compromise a machine and then patch its vulnerabilities to stop other players from also gaining access. 
+The longer your name stays in king.txt, the more points you get.  
 The real challenge in this game is to defend the king.txt file.
 
 # Ways to protect king.txt:
@@ -36,7 +37,7 @@ To view the file attributes on a file you can use lsattr(https://man7.org/linux/
 <pre>lsattr king.txt</pre>
 
 kingmaker:
-you now might think of a loop which constantly resets the immutable bit on king.txt and i would like to add a reference to Aquinas github as he wrote a good kingmaker script:
+you now might think of a loop which constantly resets the immutable bit on king.txt and i would like to add a reference to Aquinas github as he wrote a good kingmaker script: 
 https://github.com/ChrisPritchard/ctf-writeups/blob/master/tryhackme-koth/tools/kingmaker.c
 this tool uses the ioctl syscall to set the immutable bit very fast.
 Disadvantages:
@@ -59,7 +60,9 @@ sudo mount -o bind /dev/shm/sqashfs/king.txt /root/king.txt
 sudo rm -rf /dev/shm/root_f
 </pre>
 
-This trick creates a second file system and links a folder to it. After that this file system gets mounted read only and mounted over the original king file. In the end the unnecessary file system file system gets deleted.
+This trick creates a second file system and links a folder to it. 
+After that this file system gets mounted read only and mounted over the original king file. 
+In the end the unnecessary file system file system gets deleted.
 
 Disadvantages:
 Can break the machine if used by noobs who dont understand what they are doing. The king file can be unmounted using umount -l king.txt.
