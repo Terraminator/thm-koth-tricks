@@ -137,7 +137,7 @@ To prevent getting targeted by this do not load the rc file on startup. For exam
 
 you can even put them into a shell you implemented yourself(f.e. trap "pre-prompt" or modify PROMPT_COMMAND, PS1 ...).
 
-I also like to install bash insulter for command not found and stuff.  
+I also like to install bash insulter for "command not found" (f.e. https://github.com/holmes-py/bash-insulter).  
 To monitor the ativity of other users i recommend using pspy(https://github.com/DominicBreuker/pspy)  
 I hope this ressource provides a good base for learning!
 
