@@ -4,7 +4,7 @@ Note:
 First of all I suggest trying to find tricks for yourself before reading this as you will learn the most by inventing things for yourself. You wont find any flags or writeups for koth machines here, as the machines are not rotating and I want to keep the game playable.
 I also want to thank some people i had fun with during playing koth: MatheuzSec(https://github.com/MatheuZSecurity), F11Snipe(https://github.com/f11snipe), H00dy(https://github.com/hoodietramp)
 
-#Introudction:
+# Introudction:
 King of the Hill (KoTH) is a competitive hacking game, where you play against 10 other hackers to compromise a machine and then patch its vulnerabilities to stop other players from also gaining access. The longer your name stays in king.txt, the more points you get.
 The real challenge in this game is to defend the king.txt file.
 
@@ -108,7 +108,7 @@ https://man7.org/linux/man-pages/man1/w.1.html
 
 Then you can send them nyacat by executing:
 
-./nyacat > /dev/pts/yourpts
+<pre>./nyacat > /dev/pts/yourpts</pre>
 
 You can even execute commands in their terminals if the have a pts:
 <pre>script -f /dev/pts/yourpts</pre>
