@@ -77,22 +77,25 @@ here are some ressources i used to build my own ones:
 https://github.com/m0nad/Diamorphine
 https://xcellerator.github.io/posts/linux_rootkits_01/
 
-If you want to see one of my rootkits even though it is not specific for king of the hill you can look at the rootkit locutus i developed for DemonizedShell:
-https://github.com/MatheuZSecurity/D3m0n1z3dShell/tree/main/locutus
-you can find the installer here:
+If you want to see one of my rootkits even though it is not specific for king of the hill you can look at the rootkit locutus i developed for DemonizedShell: 
+https://github.com/MatheuZSecurity/D3m0n1z3dShell/tree/main/locutus  
+you can find the installer here:  
 https://raw.githubusercontent.com/MatheuZSecurity/D3m0n1z3dShell/main/install_locutus.sh
 
-Disadvantages:
-Rootkits are really invasive and can breaks machines. Kernelmodules in general need to be recompiled for every single target architecture. If they do not have any hiding capabilities you can find them by running lsmod(https://man7.org/linux/man-pages/man8/lsmod.8.html).
-If you find a rootkit by using lsmod you can usually remove it by running rmmod module_name or modprobe -r module_name. Sometimes they also leave traces in /var/log/kern.log and dmesg. You can clear dmesg by running dmesg --clear. They are also not persistent and will be unloaded after a reboot.
-If a rootkit was coded by people who know what they are doing there is litterally no way to find it then scanning your filesystem from an external device. You need to be root to implant a rootkit.
+Disadvantages:  
+Rootkits are really invasive and can breaks machines.  
+Kernelmodules in general need to be recompiled for every single target architecture. If they do not have any hiding capabilities you can find them by running lsmod(https://man7.org/linux/man-pages/man8/lsmod.8.html).  
+If you find a rootkit by using lsmod you can usually remove it by running rmmod module_name or modprobe -r module_name. Sometimes they also leave traces in /var/log/kern.log and dmesg.  
+You can clear dmesg by running dmesg --clear.  
+They are also not persistent and will be unloaded after a reboot.  
+If a rootkit was coded by people who know what they are doing there is litterally no way to find it then scanning your filesystem from an external device. You need to be root to implant a rootkit. 
 Other places you could look for a rootkit: /proc/kallsyms and /etc/modules.
 
 # Persistence Techniques:
-I recommend looking at the following tool I helped developing:
+I recommend looking at the following tool I helped developing:  
 https://github.com/MatheuZSecurity/D3m0n1z3dShell#
 
-## process hiding
+## process hiding  
 similar to the mount trick you can hide process by mounting an empty directory above their proc folder as ps is using the /proc folder to list all processes. For example:
 
 <pre>mkdir /dev/shm/.hidden && mount -o bind /dev/shm/.hidden /proc/pid</pre>
@@ -100,33 +103,32 @@ similar to the mount trick you can hide process by mounting an empty directory a
 ## Troll
 
 ### Basics:
-You can send nyancat to a user who has a pts(pseudo terminal slave):
+You can send nyancat to a user who has a pts(pseudo terminal slave):  
 download and compile nyancat from here: (https://github.com/klange/nyancat.git)
 
 You can list users who have a pts using: <pre>w</pre>
 https://man7.org/linux/man-pages/man1/w.1.html
 
-Then you can send them nyacat by executing:
-
+Then you can send them nyacat by executing:  
 <pre>./nyacat > /dev/pts/yourpts</pre>
 
-You can even execute commands in their terminals if the have a pts:
-<pre>script -f /dev/pts/yourpts</pre>
+You can even execute commands in their terminals if the have a pts:  
+<pre>script -f /dev/pts/yourpts</pre>  
 
 This can all be bypassed by just not using a pts.
 
 ### Advanced:
 
-You can manipulate bashrc files to run command before the user even gets into the terminal.
-For example change /home/user/.bashrc and add a line like echo "Hello" and the user will be greeted with Hello on login.
-I will leave the potential to your creativity here. There are also other rc files you could research.
+You can manipulate bashrc files to run command before the user even gets into the terminal.  
+For example change /home/user/.bashrc and add a line like echo "Hello" and the user will be greeted with Hello on login.  
+I will leave the potential to your creativity here. There are also other rc files you could research.  
 To prevent getting targeted by this do not load the rc file on startup. For example you can disable the rc file on startup with:
 <pre>ssh -t username@hostname /bin/sh</pre>
 
 you can even put them into a shell you implemented yourself(f.e. trap "pre-prompt" or modify PROMPT_COMMAND, PS1 ...).
 
-I also like to install bash insulter for command not found and stuff.
-To monitor the ativity of other users i recommend using pspy(https://github.com/DominicBreuker/pspy)
+I also like to install bash insulter for command not found and stuff.  
+To monitor the ativity of other users i recommend using pspy(https://github.com/DominicBreuker/pspy)  
 I hope this ressource provides a good base for learning!
 
 Terraminator
