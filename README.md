@@ -36,7 +36,7 @@ To view the file attributes on a file you can use lsattr(https://man7.org/linux/
 
 <pre>lsattr king.txt</pre>
 
-kingmaker:
+## kingmaker:
 you now might think of a loop which constantly resets the immutable bit on king.txt and i would like to add a reference to Aquinas github as he wrote a good kingmaker script: 
 https://github.com/ChrisPritchard/ctf-writeups/blob/master/tryhackme-koth/tools/kingmaker.c
 this tool uses the ioctl syscall to set the immutable bit very fast.
@@ -101,11 +101,11 @@ They are also not persistent and will be unloaded after a reboot.
 If a rootkit was coded by people who know what they are doing there is litterally no way to find it then scanning your filesystem from an external device. You need to be root to implant a rootkit. 
 Other places you could look for a rootkit: /proc/kallsyms and /etc/modules.
 
-# Persistence Techniques:
+# Persistence techniques:
 I recommend looking at the following tool I helped developing:  
 https://github.com/MatheuZSecurity/D3m0n1z3dShell#
 
-## process hiding  
+## Process hiding  
 similar to the mount trick you can hide process by mounting an empty directory above their proc folder as ps is using the /proc folder to list all processes. For example:
 
 <pre>mkdir /dev/shm/.hidden && mount -o bind /dev/shm/.hidden /proc/pid</pre>
@@ -125,7 +125,7 @@ Then you can send them nyacat by executing:
 You can even execute commands in their terminals if the have a pts:  
 <pre>script -f /dev/pts/yourpts</pre>  
 
-This can all be bypassed by just not using a pts.
+This can all be mitigated by just not using a pts.
 
 ### Advanced:
 
