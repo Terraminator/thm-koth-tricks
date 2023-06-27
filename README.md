@@ -69,10 +69,10 @@ The file system can be mounted to be writable again using: mount -o rw,remount /
 
 I want to say that i dont like users who spam their rootkits in public games, as they are completely gamebreaking. Also they are not really practical in real world.
 
-##Userspace rootkits:
+## Userspace rootkits:
 see https://github.com/Terraminator/kirito
 
-##Kernelmode rootkits:
+## Kernelmode rootkits:
 here are some ressources i used to build my own ones:
 https://github.com/m0nad/Diamorphine
 https://xcellerator.github.io/posts/linux_rootkits_01/
