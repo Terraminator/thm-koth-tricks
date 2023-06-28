@@ -16,11 +16,11 @@ The real challenge in this game is to defend the king.txt file.
 you can use chattr to set the immutable bit on the king file:
 <pre>echo USERNAME > king.txt</pre>
 <pre>chattr +i king.txt</pre>
-according to the docs(https://man7.org/linux/man-pages/man1/chattr.1.html):
+according to the docs(https://man7.org/linux/man-pages/man1/chattr.1.html):  
 i      A file with the 'i' attribute cannot be modified: it
        cannot be deleted or renamed, no link can be created to
-       this file, most of the file's metadata can not be
-       modified, and the file can not be opened in write mode.
+       this file, most of the file's metadata cannot be
+       modified, and the file cannot be opened in write mode.
        Only the superuser or a process possessing the
        CAP_LINUX_IMMUTABLE capability can set or clear this
        attribute.
@@ -62,7 +62,7 @@ sudo rm -rf /dev/shm/root_f
 
 This trick creates a second file system and links a folder to it. 
 After that this file system gets mounted read only and mounted over the original king file. 
-In the end the unnecessary file system file system gets deleted.
+In the end the unnecessary file system gets deleted but the link still exists.
 
 Disadvantages:
 Can break the machine if used by noobs who dont understand what they are doing. The king file can be unmounted using umount -l king.txt.
@@ -98,7 +98,7 @@ Kernelmodules in general need to be recompiled for every single target architect
 If you find a rootkit by using lsmod you can usually remove it by running rmmod module_name or modprobe -r module_name. Sometimes they also leave traces in /var/log/kern.log and dmesg.  
 You can clear dmesg by running dmesg --clear.  
 They are also not persistent and will be unloaded after a reboot.  
-If a rootkit was coded by people who know what they are doing there is litterally no way to find it then scanning your filesystem from an external device. You need to be root to implant a rootkit. 
+If a rootkit was coded by people who know what they are doing there is litterally no way to find it then scanning your  from an external device. You need to be root to implant a rootkit. 
 Other places you could look for a rootkit: /proc/kallsyms and /etc/modules.
 
 # Persistence techniques:
