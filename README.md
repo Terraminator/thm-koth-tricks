@@ -17,7 +17,7 @@ you can use chattr to set the immutable bit on the king file:
 <pre>echo USERNAME > king.txt</pre>
 <pre>chattr +i king.txt</pre>
 according to the docs(https://man7.org/linux/man-pages/man1/chattr.1.html):  
-i      A file with the 'i' attribute cannot be modified: it
+i       A file with the 'i' attribute cannot be modified: it
        cannot be deleted or renamed, no link can be created to
        this file, most of the file's metadata cannot be
        modified, and the file cannot be opened in write mode.
